@@ -1,35 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Booking System</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet"  />
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
     <header>
-        <p class="welcome-message">Welcome!</p>
-        <h1 class="title">Online Appointment Booking System</h1>
+      <p class="welcome-message">Welcome!</p>
+      <h1 class="title">Online Appointment Booking System</h1>
     </header>
 
     <main>
-        <div class="section">
-            <section class="section-box">
-                <h2>Doctor Consultation</h2>
-                <button class="section-button">Book Appointment</button>
-            </section>
-            <section class="section-box">
-                <h2>Salon Booking</h2>
-                <button class="section-button">Book Appointment</button>
-            </section>
-            <section class="section-box">
-                <h2>CarService</h2>
-                <button class="section-button">Book Appointment</button>
-            </section>
+      <div class="section">
+        <section class="section-box">
+          <h2>Doctor Consultation</h2>
+          <button class="section-button">Book Appointment</button>
+        </section>
+        <section class="section-box">
+          <h2>Salon Booking</h2>
+          <button class="section-button">Book Appointment</button>
+        </section>
+        <section class="section-box">
+          <h2>Car Service</h2>
+          <button class="section-button">Book Appointment</button>
+        </section>
+      </div>
+      <!-- Appointment Booking Modal -->
+      <div id="booking-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Book an Appointment</h2>
+          <form id="booking-form">
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" required />
+            <small class="error-message" id="name-error"></small>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" required />
+            <small class="error-message" id="email-error"></small>
+
+            <label for="phone">Phone Number:</label>
+            <input
+              type="text"
+              id="phone"
+              required
+              placeholder="10-digit number"
+            />
+            <small class="error-message" id="phone-error"></small>
+
+            <label for="service">Select Service:</label>
+            <select id="service" required>
+              <option value="">-- Select --</option>
+              <option value="Doctor">Doctor Consultation</option>
+              <option value="Salon">Salon Booking</option>
+              <option value="Car">Car Service</option>
+            </select>
+            <small class="error-message" id="service-error"></small>
+
+            <label for="datetime">Preferred Date & Time:</label>
+            <input type="datetime-local" id="datetime" required />
+            <small class="error-message" id="datetime-error"></small>
+
+            <label for="requests">Special Requests (Optional):</label>
+            <textarea id="requests"></textarea>
+
+            <label>
+              <input type="checkbox" id="terms" required />
+              Agree to Terms
+            </label>
+            <small class="error-message" id="terms-error"></small>
+
+            <button type="submit">Submit</button>
+          </form>
         </div>
+      </div>
+
+      <!-- Display Booked Appointments -->
+      <h2 class="appointments-title">Booked Appointments</h2>
+      <table id="appointments-table">
+        <thead>
+          <tr>
+            <th>Customer Name</th>
+            <th>Service</th>
+            <th>Date & Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="appointments-list">
+          <!-- Appointments will be inserted here -->
+        </tbody>
+      </table>
     </main>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
